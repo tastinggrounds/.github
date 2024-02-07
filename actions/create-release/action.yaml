@@ -3,6 +3,9 @@ description: Tag and create a release in GitHub
 runs:
   using: 'composite'
   steps:
+    - name: PWD
+      shell: bash
+      run: pwd
     - name: Tag Git Version
       shell: bash
       run: ./scripts/release.sh
