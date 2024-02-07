@@ -1,0 +1,13 @@
+name: Tag and Create Release
+
+on:
+  workflow-call:
+
+jobs:
+  tag-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tag Git Version
+        run: ./scripts/tag-release.sh
+          
+      
