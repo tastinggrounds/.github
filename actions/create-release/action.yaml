@@ -30,4 +30,5 @@ runs:
           echo "Tagged $VERSION"	
         fi
         
+        echo "Creating GitHub Release: $VERSION"
     
