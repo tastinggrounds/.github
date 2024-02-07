@@ -5,9 +5,16 @@ runs:
   steps:
     - name: PWD
       shell: bash
-      run: pwd
-    - name: Tag Git Version
-      shell: bash
-      run: ./scripts/release.sh
+      run: |
+        if test -f "package.json"; then
+          VERSION=v$(cat package.json | jq .version -r)
+        elif test -f "VERSION"; then
+          VERSION=v$(cat VERSION)
+        else
+          echo "No package.json or VERSION file found"
+          exit 1
+        fi
+
+        gh --version
         
     
