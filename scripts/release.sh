@@ -25,17 +25,24 @@ echo "export CIRCLE_TAG=$VERSION" >> $BASH_ENV
 
 echo "Creating GitHub Release: $VERSION"
 
-RELEASE_LINE_NUM=$(grep -n "\[$VERSION\]" CHANGELOG.md | cut -d : -f 1)
-CHANGELOG_START=$(($RELEASE_LINE_NUM + 1))
+HAS_CHANGELOG=$(test -f "CHANGELOG.md")
 
-mkdir -p /tmp/ghr
-sed -n "$CHANGELOG_START,/^$/p" CHANGELOG.md > /tmp/ghr/release-notes.md
+if test -f "CHANGELOG"; then
+  RELEASE_LINE_NUM=$(grep -n "\[$VERSION\]" CHANGELOG.md | cut -d : -f 1)
+  CHANGELOG_START=$(($RELEASE_LINE_NUM + 1))
 
-LINK=$(gh release create $VERSION --notes-file /tmp/ghr/release-notes.md --title $VERSION)
+  mkdir -p /tmp/ghr
+  sed -n "$CHANGELOG_START,/^$/p" CHANGELOG.md > /tmp/ghr/release-notes.md
+
+  LINK=$(gh release create $VERSION --notes-file /tmp/ghr/release-notes.md --title $VERSION)
+else
+  LINK=$(gh release create $VERSION --title $VERSION)
+fi
 
 echo "Created Release: $VERSION"
 echo $LINK
 
-rm -rf .ghr
+rm -rf /tmp/ghr
+
 exit 0
 
