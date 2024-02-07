@@ -32,8 +32,6 @@ runs:
         
         echo "Creating GitHub Release: $VERSION"
 
-        HAS_CHANGELOG=$(test -f "CHANGELOG.md")
-
         if test -f "CHANGELOG.md"; then
           RELEASE_LINE_NUM=$(grep -n "\[$VERSION\]" CHANGELOG.md | cut -d : -f 1)
           CHANGELOG_START=$(($RELEASE_LINE_NUM + 1))
