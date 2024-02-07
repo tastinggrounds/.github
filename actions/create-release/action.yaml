@@ -34,7 +34,7 @@ runs:
 
         HAS_CHANGELOG=$(test -f "CHANGELOG.md")
 
-        if test -f "CHANGELOG"; then
+        if test -f "CHANGELOG.md"; then
           RELEASE_LINE_NUM=$(grep -n "\[$VERSION\]" CHANGELOG.md | cut -d : -f 1)
           CHANGELOG_START=$(($RELEASE_LINE_NUM + 1))
 
@@ -43,6 +43,7 @@ runs:
 
           LINK=$(gh release create $VERSION --notes-file /tmp/ghr/release-notes.md --title $VERSION)
         else
+          echo "HEYO"
           LINK=$(gh release create $VERSION --notes "No Release Notes" --title $VERSION)
         fi
 
