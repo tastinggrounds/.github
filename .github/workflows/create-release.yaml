@@ -1,7 +1,7 @@
 name: Tag and Create Release
 
 on:
-  workflow-call:
+  workflow_call:
 
 jobs:
   tag-release:

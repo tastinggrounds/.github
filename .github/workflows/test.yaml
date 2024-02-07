@@ -1,9 +1,8 @@
 name: Test
 on:
-  - push:
-      branches:
-        - main
-  - workflow-dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
