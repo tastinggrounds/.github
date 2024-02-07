@@ -16,5 +16,18 @@ runs:
         fi
 
         gh --version
+
+        EXIT_CODE=0	
+
+        git tag ${VERSION} || EXIT_CODE=$?	
+
+        if [ $EXIT_CODE -ne 0 ];	
+        then	
+          echo "Skip taging $VERSION because it already exists."	
+          exit 0
+        else	
+          git push origin $VERSION	
+          echo "Tagged $VERSION"	
+        fi
         
     
