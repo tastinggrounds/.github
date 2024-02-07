@@ -1,4 +1,4 @@
-name: Tag and Create Release
+name: create-release
 description: Tag and create a release in GitHub
 runs:
   using: 'composite'
