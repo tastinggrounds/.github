@@ -36,7 +36,7 @@ if test -f "CHANGELOG"; then
 
   LINK=$(gh release create $VERSION --notes-file /tmp/ghr/release-notes.md --title $VERSION)
 else
-  LINK=$(gh release create $VERSION --title $VERSION)
+  LINK=$(gh release create $VERSION --notes "No Release Notes" --title $VERSION)
 fi
 
 echo "Created Release: $VERSION"
