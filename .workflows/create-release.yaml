@@ -8,6 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Tag Git Version
-        run: ./scripts/tag-release.sh
+        run: ./scripts/release.sh
           
       

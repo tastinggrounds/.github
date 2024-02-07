@@ -1,6 +1,14 @@
 set -e	
 
-VERSION=v$(cat package.json | jq .version -r)	
+if test -f "package.json"; then
+  VERSION=v$(cat package.json | jq .version -r)
+elif test -f "VERSION"; then
+  VERSION=v$(cat VERSION)
+else
+  echo "No package.json or VERSION file found"
+  exit 1
+fi
+
 EXIT_CODE=0	
 
 git tag ${VERSION} || EXIT_CODE=$?	
