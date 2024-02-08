@@ -39,7 +39,7 @@ runs:
           echo "Skip release $VERSION because it already exists."	
           exit 0
         else
-          git remote -v
+          git tag $VERSION
           git push origin $VERSION	
           echo "Tagged $VERSION"	
         fi
