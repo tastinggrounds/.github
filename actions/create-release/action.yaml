@@ -3,7 +3,7 @@ description: Tag and create a release in GitHub
 runs:
   using: 'composite'
   steps:
-    - name: PWD
+    - name: Tag and Create Release
       shell: bash
       run: |
         if test -f "package.json"; then
