@@ -38,7 +38,8 @@ runs:
         if [ $(git tag -l "$VERSION") ]; then
           echo "Skip release $VERSION because it already exists."	
           exit 0
-        else	
+        else
+          git remote -v
           git push origin $VERSION	
           echo "Tagged $VERSION"	
         fi
