@@ -1,9 +1,16 @@
 name: create-release
 description: Tag and create a release in GitHub
+inputs:
+  require_main_branch:
+    description: 'Require the action to run on the main branch'
+    type: 'boolean'
+    required: false
+    default: true
 runs:
   using: 'composite'
   steps:
     - name: Check Branch
+      if: ${{ inputs.require_main_branch }}
       shell: bash
       run: |
         if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
