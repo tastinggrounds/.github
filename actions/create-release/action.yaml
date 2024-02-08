@@ -23,7 +23,7 @@ runs:
 
         if [ $EXIT_CODE -ne 1 ];
         then	
-          echo "Skip taging $VERSION because it already exists."	
+          echo "Skip release $VERSION because it already exists."	
           exit 0
         else	
           git push origin $VERSION	
