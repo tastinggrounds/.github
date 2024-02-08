@@ -18,7 +18,7 @@ runs:
         EXIT_CODE=0
 
         echo "Found Version: $VERSION"
-        git tag -l "$VERSION"
+        echo $(git tag -l "$VERSION")
 
         if [ $(git tag -l "$VERSION") ]; then
           echo "Skip release $VERSION because it already exists."	
