@@ -15,15 +15,13 @@ runs:
           exit 1
         fi
 
-        gh --version
-
         EXIT_CODE=0	
 
-        if [ $(git tag -l "$VERSION") ];
-        then	
+        if [ $(git tag -l "$VERSION") ];  then
           echo "Skip release $VERSION because it already exists."	
           exit 0
         else	
+          echo "heyo this is weird"
           git push origin $VERSION	
           echo "Tagged $VERSION"	
         fi
