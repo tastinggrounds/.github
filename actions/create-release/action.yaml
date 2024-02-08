@@ -10,7 +10,7 @@ runs:
   using: 'composite'
   steps:
     - name: Check Branch
-      if: ${{ inputs.require_main_branch }}
+      if: ${{ inputs.require_main_branch == 'true' }}
       shell: bash
       run: |
         if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
