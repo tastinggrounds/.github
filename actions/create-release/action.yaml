@@ -6,6 +6,8 @@ runs:
     - name: Tag and Create Release
       shell: bash
       run: |
+        git fetch --tags
+
         if test -f "package.json"; then
           VERSION=v$(cat package.json | jq .version -r)
         elif test -f "VERSION"; then
