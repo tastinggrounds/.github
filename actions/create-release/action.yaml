@@ -41,7 +41,6 @@ runs:
 
           LINK=$(gh release create $VERSION --notes-file /tmp/ghr/release-notes.md --title $VERSION)
         else
-          echo "HEYO"
           LINK=$(gh release create $VERSION --notes "No Release Notes" --title $VERSION)
         fi
 
